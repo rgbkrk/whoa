@@ -1,0 +1,12 @@
+FROM debian:jessie
+
+RUN apt-get update -y
+RUN apt-get install -y build-essential
+
+ADD . /tin
+
+WORKDIR /tin
+
+RUN make whoa
+
+CMD ["cat", "/tin/whoa"]
