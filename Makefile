@@ -15,6 +15,8 @@ cycle: images
 	docker run -d --name whoa -it -p 80:8080 whoa/tiny
 	curl $(DOCKER_IP)
 
+upload: images
+	docker push whoa/tiny
 
 $(PROG): $(SOURCES) Makefile
 	$(CC) -o $(PROG) $(SOURCES) $(CFLAGS)
