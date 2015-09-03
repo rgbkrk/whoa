@@ -6,6 +6,7 @@ static int ev_handler(struct mg_connection *conn, enum mg_event ev) {
   switch (ev) {
     case MG_AUTH: return MG_TRUE;
     case MG_REQUEST:
+      mg_send_header(conn, "Content-Type", "text/html; charset=utf-8");
       mg_printf_data(conn, "🎉 Whoa! 🎉\n");
       return MG_TRUE;
     default: return MG_FALSE;
